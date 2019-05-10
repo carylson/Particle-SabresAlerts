@@ -9,16 +9,14 @@ PRODUCT_ID(9438);
 PRODUCT_VERSION(1.1);
 
 #include <neopixel.h>
+#include "utils/Neopixel.ino"
 
 #define PIXEL_COUNT 24
 #define PIXEL_PIN D3
 #define PIXEL_TYPE WS2812B
-
 #define SPEAKER_PIN D2
 
 Adafruit_NeoPixel strip(PIXEL_COUNT, PIXEL_PIN, PIXEL_TYPE);
-
-#include "utils/Neopixel.ino"
 
 void setup() {
 
