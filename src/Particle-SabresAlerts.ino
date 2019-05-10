@@ -20,7 +20,7 @@ void setup() {
   
   playScore();
 
-  Particle.subscribe("sabres_score", scoreHandler);
+  Particle.subscribe("sabres_score", scoreHandler, MY_DEVICES);
 
 }
 

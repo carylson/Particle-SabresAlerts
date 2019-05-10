@@ -20,17 +20,14 @@ Adafruit_NeoPixel strip(PIXEL_COUNT, PIXEL_PIN, PIXEL_TYPE);
 
 void setup() {
 
-  // Init speaker...
   pinMode(SPEAKER_PIN, OUTPUT);
 
-  // Init Neopixels...
   strip.begin();
   strip.show();
   
-  // Startup procedure...
   playScore();
 
-  Particle.subscribe("sabres_score", scoreHandler);
+  Particle.subscribe("sabres_score", scoreHandler, MY_DEVICES);
 
 }
 
@@ -41,18 +38,24 @@ void scoreHandler(const char *event, const char *data) {
 }
 
 void playScore() {
+
   colorAll(strip, strip.Color(255, 255, 255), 0);
+  
   playMelody();
+  
   rainbow(strip, 5);
   rainbow(strip, 5);
   rainbow(strip, 5);
   rainbow(strip, 5);
   rainbow(strip, 5);
+  
   strip.clear();
   strip.show();
+
 }
 
 void playMelody() {
+
     tone(SPEAKER_PIN, 523); //C
     delay(150);
     tone(SPEAKER_PIN, 659); //E
@@ -65,5 +68,7 @@ void playMelody() {
     delay(150);
     tone(SPEAKER_PIN, 880); //A
     delay(600);
+    
     noTone(SPEAKER_PIN);
+
 }
